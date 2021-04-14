@@ -3,10 +3,10 @@ import { Profile } from "../components/Profile";
 import { CompletedChallenges } from "../components/CompletedChallenges";
 import { Countdown } from "../components/Countdown";
 import { ChallegendBox } from "../components/ChallegendBox";
-import styles from '../styles/pages/Home.module.css'
+import { CountdownProvider } from "../contexts/CountdownContext";
+import styles from "../styles/pages/Home.module.css";
 
-import Head from 'next/head'
-
+import Head from "next/head";
 
 export default function Home() {
   return (
@@ -17,17 +17,19 @@ export default function Home() {
 
       <ExperienceBar />
 
-      <section>
-        <div>
-          <Profile />
-          <CompletedChallenges />
-          <Countdown />
-        </div>
+      <CountdownProvider>
+        <section>
+          <div>
+            <Profile />
+            <CompletedChallenges />
+            <Countdown />
+          </div>
 
-        <div>
-          <ChallegendBox />
-        </div>
-      </section>
+          <div>
+            <ChallegendBox />
+          </div>
+        </section>
+      </CountdownProvider>
     </div>
   );
 }
